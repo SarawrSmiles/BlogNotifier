@@ -23,6 +23,14 @@ def get_current_article():
              "url" : url }
 
 def get_last_article():
+    file = open('article_titles.txt', 'r')
+    article_titles = file.read()
+    file.close()
+    article_titles = article_titles.split('\n')
+    print len(article_titles)
+    print article_titles
+    last_article = article_titles[len(article_titles) - 1]
+    print last_article
     pass
 
 def send_message():
