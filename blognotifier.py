@@ -22,16 +22,30 @@ def get_current_article():
     return { "title" : title,
              "url" : url }
 
-def get_last_article():
+def get_last_article_title():
     file = open('article_titles.txt', 'r')
     article_titles = file.read()
     file.close()
     article_titles = article_titles.split('\n')
-    print len(article_titles)
-    print article_titles
     last_article = article_titles[len(article_titles) - 1]
-    print last_article
+    return last_article
+
+def append_new_article(article_title):
+    with open('article_titles.txt', 'a') as file:
+        file.write("\n" + article_title)
+
+def send_message(article):
     pass
 
-def send_message():
-    pass
+# MAIN: 
+
+current_article = get_current_article()
+current_article_title = current_article['title']
+
+last_article_title = get_last_article_title()
+
+if current_article_title != last_article_title:
+    append_new_article(current_article_title)
+    send_message(current_article)
+
+
