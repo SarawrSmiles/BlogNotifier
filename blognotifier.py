@@ -1,11 +1,6 @@
 import urllib2
 import re
 
-def check_for_update():
-    new = get_current_article()
-    old = get_last_article()
-    return new == old
-
 def get_current_article():
     req = urllib2.Request('http://disneyparks.disney.go.com/blog/category/disneyland-resort/')
     response = response = urllib2.urlopen(req)
@@ -47,5 +42,3 @@ last_article_title = get_last_article_title()
 if current_article_title != last_article_title:
     append_new_article(current_article_title)
     send_message(current_article)
-
-
